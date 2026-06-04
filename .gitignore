@@ -1,0 +1,28 @@
+# WordPress sensitive config
+wp-config.php
+
+# Uploads (media files - too large for git)
+wp-content/uploads/
+
+# Core WordPress files (not needed in repo)
+wp-admin/
+wp-includes/
+
+# Default themes (not custom)
+wp-content/themes/twentytwentythree/
+wp-content/themes/twentytwentyfour/
+wp-content/themes/twentytwentyfive/
+
+# Default plugins
+wp-content/plugins/akismet/
+wp-content/plugins/hello.php
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# Logs
+*.log
