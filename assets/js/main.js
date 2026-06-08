@@ -361,6 +361,40 @@ if (document.readyState === "loading") {
   initStatsCounters();
 }
 
+function initShipScroll() {
+  const ship = document.querySelector(".stats-section__ship");
+
+  if (!ship || reduceMotion || !window.gsap || !window.ScrollTrigger) {
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const mm = gsap.matchMedia();
+
+  mm.add("(min-width: 768px)", () => {
+    gsap.fromTo(ship,
+      { xPercent: -20 },
+      {
+        xPercent: 10,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".stats-section",
+          start: "top bottom+=20%",
+          end: "bottom top",
+          scrub: 1.5,
+        },
+      }
+    );
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initShipScroll);
+} else {
+  initShipScroll();
+}
+
 function initPageBannerParallax() {
   const banners = document.querySelectorAll(".js-page-banner");
 
@@ -409,6 +443,30 @@ if (document.readyState === "loading") {
   initPageBannerParallax();
 }
 
+function collapseBody(body) {
+  if (!body) return;
+  const current = body.style.height === "auto" || body.style.height === ""
+    ? body.scrollHeight + "px"
+    : body.style.height;
+  body.style.height = current;
+  requestAnimationFrame(() => {
+    body.style.height = "0";
+  });
+}
+
+function expandBody(body) {
+  if (!body) return;
+  body.style.height = "0";
+  requestAnimationFrame(() => {
+    body.style.height = body.scrollHeight + "px";
+    body.addEventListener("transitionend", () => {
+      if (body.parentElement?.classList.contains("is-active")) {
+        body.style.height = "auto";
+      }
+    }, { once: true });
+  });
+}
+
 function initProductsAccordion() {
   const accordions = document.querySelectorAll(".js-products-accordion");
 
@@ -416,35 +474,45 @@ function initProductsAccordion() {
     const cards = Array.from(accordion.querySelectorAll(".product-accordion"));
 
     cards.forEach((card) => {
+      const body = card.querySelector(".product-accordion__body");
+      if (!body) return;
+
+      // Wrap content so padding is inside the clip container
+      const inner = document.createElement("div");
+      inner.className = "product-accordion__body-inner";
+      while (body.firstChild) inner.appendChild(body.firstChild);
+      body.appendChild(inner);
+
+      body.removeAttribute("hidden");
+      body.style.height = card.classList.contains("is-active") ? "auto" : "0";
+    });
+
+    cards.forEach((card) => {
       const button = card.querySelector(".product-accordion__head");
       const body = card.querySelector(".product-accordion__body");
 
-      if (!button) {
-        return;
-      }
+      if (!button || !body) return;
 
       button.addEventListener("click", () => {
         const shouldOpen = !card.classList.contains("is-active");
 
         cards.forEach((item) => {
+          if (item === card) return;
           const itemButton = item.querySelector(".product-accordion__head");
           const itemBody = item.querySelector(".product-accordion__body");
-
           item.classList.remove("is-active");
           itemButton?.setAttribute("aria-expanded", "false");
-
-          if (itemBody) {
-            itemBody.hidden = true;
-          }
+          collapseBody(itemBody);
         });
 
         if (shouldOpen) {
           card.classList.add("is-active");
           button.setAttribute("aria-expanded", "true");
-
-          if (body) {
-            body.hidden = false;
-          }
+          expandBody(body);
+        } else {
+          card.classList.remove("is-active");
+          button.setAttribute("aria-expanded", "false");
+          collapseBody(body);
         }
       });
     });

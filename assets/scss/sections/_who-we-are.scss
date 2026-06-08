@@ -177,7 +177,7 @@
   background: linear-gradient(180deg, rgba(251, 88, 2, 0.75), rgba(251, 88, 2, 0));
   transform-origin: top center;
   opacity: 0.55;
-  animation: radar-bearing-counter 12s linear infinite;
+  animation: radar-bearing 7.5s linear infinite;
 }
 
 .who-we-are__ship {
@@ -196,13 +196,13 @@
   }
 }
 
-@keyframes radar-bearing-counter {
+@keyframes radar-bearing {
   from {
-    transform: rotate(24deg);
+    transform: rotate(-18deg);
   }
 
   to {
-    transform: rotate(-336deg);
+    transform: rotate(342deg);
   }
 }
 

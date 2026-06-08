@@ -885,7 +885,7 @@ h2 strong {
   background: linear-gradient(180deg, rgba(251, 88, 2, 0.75), rgba(251, 88, 2, 0));
   transform-origin: top center;
   opacity: 0.55;
-  animation: radar-bearing-counter 12s linear infinite;
+  animation: radar-bearing 7.5s linear infinite;
 }
 
 .who-we-are__ship {
@@ -903,12 +903,12 @@ h2 strong {
     transform: rotate(360deg);
   }
 }
-@keyframes radar-bearing-counter {
+@keyframes radar-bearing {
   from {
-    transform: rotate(24deg);
+    transform: rotate(-18deg);
   }
   to {
-    transform: rotate(-336deg);
+    transform: rotate(342deg);
   }
 }
 @keyframes radar-ring-pulse {
@@ -1078,11 +1078,15 @@ h2 strong {
   }
 }
 
+.naval-innovation-wrap {
+  position: relative;
+}
+
 .naval-innovation__divider {
   position: absolute;
-  bottom: 0;
+  bottom: -0.5rem;
   left: 50%;
-  z-index: 8;
+  z-index: 10;
   width: 1rem;
   height: 1rem;
   background: linear-gradient(#fb5802, #fb5802) center/1rem 0.125rem no-repeat, linear-gradient(#fb5802, #fb5802) center/0.125rem 1rem no-repeat;
@@ -1450,11 +1454,13 @@ h2 strong {
 }
 
 .stats-section__visual {
+  display: none;
   position: relative;
   min-height: 18rem;
 }
 @media (min-width: 768px) {
   .stats-section__visual {
+    display: block;
     min-height: 28rem;
   }
 }
@@ -1471,22 +1477,24 @@ h2 strong {
   max-width: 125%;
   aspect-ratio: 1.2;
   background: radial-gradient(ellipse at center, rgba(251, 88, 2, 0.32), transparent 62%);
-  opacity: 0.62;
+  opacity: 0.92;
   filter: blur(0.5rem);
 }
 
 .stats-section__ship {
   position: absolute;
-  right: -14%;
+  left: -8%;
   bottom: 0;
-  width: min(140%, 72rem);
+  width: min(100%, 72rem);
   max-width: none;
   pointer-events: none;
+  will-change: transform;
+  z-index: 1;
 }
 @media (min-width: 1024px) {
   .stats-section__ship {
-    right: -20%;
-    width: min(132%, 76rem);
+    left: -10%;
+    width: min(70%, 90rem);
   }
 }
 
@@ -1662,7 +1670,6 @@ h2 strong {
 
 .about-section {
   position: relative;
-  overflow: hidden;
   background: #07090c;
 }
 
@@ -1742,6 +1749,8 @@ h2 strong {
   --banner-pattern-y: 0px;
   background: linear-gradient(180deg, rgba(7, 8, 12, 0.05), rgba(7, 8, 12, 0.85) 96%), radial-gradient(circle at 50% 58%, rgba(251, 88, 2, 0.12), transparent 22rem), url("../images/about/banner-pattern.svg") center calc(100% + var(--banner-pattern-y))/min(100%, 120rem) auto no-repeat, #07090c;
   transition: background-position 80ms linear;
+  background-size: cover;
+  background-position: bottom center;
 }
 
 .about-hero {
@@ -2405,7 +2414,7 @@ figure {
   border-radius: 0.75rem;
   background: #0f1019;
   color: #ffffff;
-  opacity: 0.42;
+  opacity: 0.2;
   transition: border-color 240ms cubic-bezier(0.2, 0, 0, 1), box-shadow 240ms cubic-bezier(0.2, 0, 0, 1), opacity 240ms cubic-bezier(0.2, 0, 0, 1), transform 240ms cubic-bezier(0.2, 0, 0, 1);
 }
 
@@ -2428,9 +2437,17 @@ figure {
   gap: 1rem;
   padding: 1.5rem clamp(1.25rem, 2.4vw, 2.5rem);
   border: 0;
+  outline: none;
   background: transparent;
   color: inherit;
   text-align: left;
+  cursor: pointer;
+}
+
+.product-accordion__head:focus-visible {
+  outline: 2px solid rgba(251, 88, 2, 0.7);
+  outline-offset: -3px;
+  border-radius: 0.5rem;
 }
 
 .product-accordion__label {
@@ -2475,6 +2492,7 @@ figure {
   background: currentColor;
   content: "";
   transform: translate(-50%, -50%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
 .product-accordion__icon::after {
@@ -2487,16 +2505,30 @@ figure {
 
 .product-accordion.is-active .product-accordion__icon::after {
   opacity: 0;
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
 .product-accordion__body {
-  display: grid;
-  gap: clamp(2rem, 4vw, 4rem);
-  padding: 0 clamp(1.25rem, 2.4vw, 2.5rem) 2.25rem;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: height 0.42s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.28s ease;
+}
+
+.product-accordion.is-active .product-accordion__body {
+  opacity: 1;
+  transition: height 0.42s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.32s ease 0.1s;
 }
 
 .product-accordion__body[hidden] {
-  display: none;
+  height: 0;
+  opacity: 0;
+}
+
+.product-accordion__body-inner {
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+  padding: 0 clamp(1.25rem, 2.4vw, 2.5rem) 2.25rem;
 }
 
 .product-accordion__copy {
@@ -2565,7 +2597,7 @@ figure {
   .product-accordion__head {
     padding: 1.125rem;
   }
-  .product-accordion__body {
+  .product-accordion__body-inner {
     padding: 0 1.125rem 1.5rem;
   }
   .products-showcase__visual {
@@ -3404,7 +3436,7 @@ figure {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(rgba(7, 8, 12, 0.72), rgba(7, 8, 12, 0.9)), url("../images/footer-bg.svg") center/cover no-repeat, #07090c;
+  background: linear-gradient(rgba(7, 8, 12, 0.4), rgba(7, 8, 12, 0.9)), url("../images/footer-bg.svg") center/cover no-repeat, #07090c;
 }
 
 .services-section {
@@ -3629,7 +3661,6 @@ figure {
 
 .site-footer__socials {
   display: flex;
-  flex-direction: column;
   gap: 0.6875rem;
   align-items: flex-start;
 }

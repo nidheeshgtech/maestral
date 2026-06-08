@@ -22,10 +22,12 @@
 }
 
 .stats-section__visual {
+  display: none;
   position: relative;
   min-height: 18rem;
 
   @include tablet {
+    display: block;
     min-height: 28rem;
   }
 
@@ -41,21 +43,23 @@
   max-width: 125%;
   aspect-ratio: 1.2;
   background: radial-gradient(ellipse at center, rgba(251, 88, 2, 0.32), transparent 62%);
-  opacity: 0.62;
+  opacity: 0.92;
   filter: blur(0.5rem);
 }
 
 .stats-section__ship {
   position: absolute;
-  right: -14%;
+  left: -8%;
   bottom: 0;
-  width: min(140%, 72rem);
+  width: min(100%, 72rem);
   max-width: none;
   pointer-events: none;
+  will-change: transform;
+  z-index: 1;
 
   @include small-desktop {
-    right: -20%;
-    width: min(132%, 76rem);
+    left: -10%;
+    width: min(70%, 90rem);
   }
 }
 
