@@ -1,0 +1,129 @@
+@use "../abstracts/tokens" as *;
+@use "../abstracts/mixins" as *;
+
+.hero-banner {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: $color-black;
+}
+
+.hero-banner__media,
+.hero-banner__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-banner__media {
+  z-index: 0;
+  overflow: hidden;
+  background: $color-black;
+}
+
+.hero-banner__poster {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: $color-black;
+  opacity: 1;
+  transition: opacity 700ms $ease-standard;
+}
+
+.hero-banner.is-video-ready .hero-banner__poster {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-banner__video {
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  display: block;
+  width: max(100vw, 177.7778svh);
+  min-width: 100%;
+  height: max(100svh, 56.25vw);
+  min-height: 100%;
+  border: 0;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  transition: opacity 700ms $ease-standard;
+}
+
+.hero-banner__overlay {
+  z-index: 3;
+  background: linear-gradient(256deg,
+      rgba(7, 8, 12, 0) -34.08%,
+      rgba(7, 8, 12, 0.6) 56.55%,
+      rgba(7, 8, 12, 0.6) 99.18%);
+  pointer-events: none;
+}
+
+.hero-banner__content {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  min-height: 100svh;
+  align-content: end;
+  gap: 2rem;
+  padding-block: 5rem 3rem;
+
+  @include tablet {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    padding-block: 6rem 4rem;
+  }
+
+  @include small-desktop {
+    padding-block: 7rem 5rem;
+  }
+}
+
+.hero-banner__copy {
+  max-width: 61.8125rem;
+}
+
+.hero-banner__title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: $color-white;
+  font-size: clamp(2.75rem, 6.2vw, 5rem);
+  font-weight: $font-weight-regular;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.hero-banner__title-line {
+  display: block;
+  overflow: hidden;
+}
+
+.hero-banner__title-line>span {
+  display: inline-block;
+}
+
+.text-accent {
+  color: $color-orange;
+}
+
+.hero-banner__subtitle {
+  margin: 1.5rem 0 0;
+  color: #99a1af;
+  font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+  line-height: 1.3;
+}
+
+.hero-banner__partner-logo {
+  width: min(100%, 27rem);
+  height: auto;
+  justify-self: start;
+
+  @include tablet {
+    width: clamp(15rem, 22.5vw, 27rem);
+    justify-self: end;
+    margin-bottom: 0.625rem;
+  }
+}

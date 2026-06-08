@@ -1,0 +1,16 @@
+@use "../abstracts/tokens" as *;
+
+.services-footer-bg {
+  position: relative;
+
+  .services-footer-bg-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(rgba(7, 8, 12, 0.72), rgba(7, 8, 12, 0.9)),
+      url("../images/footer-bg.svg") center / cover no-repeat,
+      $color-black;
+  }
+
+}

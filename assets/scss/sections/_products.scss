@@ -1,0 +1,206 @@
+@use "../abstracts/tokens" as *;
+
+.products-showcase {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4rem, 7vw, 6.25rem) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  background: $color-black;
+}
+
+.products-showcase__inner {
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+}
+
+.products-showcase__list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.product-accordion {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: #0f1019;
+  color: $color-white;
+  opacity: 0.42;
+  transition:
+    border-color $duration-base $ease-standard,
+    box-shadow $duration-base $ease-standard,
+    opacity $duration-base $ease-standard,
+    transform $duration-base $ease-standard;
+}
+
+.product-accordion:hover {
+  opacity: 0.72;
+  transform: translateY(-0.125rem);
+}
+
+.product-accordion.is-active {
+  border: 1px solid rgba(255, 105, 0, 0.3);
+  box-shadow: 0.25rem 0.25rem 3.75rem rgba(255, 105, 0, 0.1);
+  opacity: 1;
+}
+
+.product-accordion__head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem clamp(1.25rem, 2.4vw, 2.5rem);
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.product-accordion__label {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 1rem;
+  font-size: clamp(1.125rem, 1.8vw, 1.75rem);
+  line-height: 1.15;
+}
+
+.product-accordion__label::before {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: $color-white;
+  content: "";
+}
+
+.product-accordion.is-active .product-accordion__label::before {
+  border: 0.375rem solid rgba(251, 88, 2, 0.35);
+  background: $color-orange;
+  box-sizing: content-box;
+}
+
+.product-accordion__icon {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  border: 1px dashed rgba(255, 255, 255, 0.26);
+  border-radius: 0.25rem;
+}
+
+.product-accordion__icon::before,
+.product-accordion__icon::after {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 1rem;
+  height: 2px;
+  background: currentColor;
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.product-accordion__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.product-accordion.is-active .product-accordion__icon {
+  color: $color-orange;
+}
+
+.product-accordion.is-active .product-accordion__icon::after {
+  opacity: 0;
+}
+
+.product-accordion__body {
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+  padding: 0 clamp(1.25rem, 2.4vw, 2.5rem) 2.25rem;
+}
+
+.product-accordion__body[hidden] {
+  display: none;
+}
+
+.product-accordion__copy {
+  max-width: 43.5rem;
+  margin: 0;
+  color: $color-white;
+  font-size: clamp(0.9375rem, 1.1vw, 1.125rem);
+  line-height: 1.5;
+}
+
+.product-accordion__specs {
+  display: grid;
+  gap: 0.1rem;
+  margin: 0;
+  color: $color-white;
+  font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace;
+  font-size: clamp(0.875rem, 1.1vw, 1.125rem);
+  line-height: 1.5;
+}
+
+.product-accordion__specs div {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.product-accordion__specs dt,
+.product-accordion__specs dd {
+  margin: 0;
+}
+
+.product-accordion__specs dd {
+  color: #ff6900;
+  font-weight: 500;
+}
+
+.products-showcase__visual {
+  position: relative;
+  min-height: clamp(22rem, 46vw, 44.75rem);
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: #0f1019;
+}
+
+.products-showcase__ship {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  z-index: 2;
+  width: min(78%, 34rem);
+  max-width: none;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 2rem 2.5rem rgba(0, 0, 0, 0.45));
+}
+
+@media (min-width: 1024px) {
+  .products-showcase__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(25rem, 0.95fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .products-showcase {
+    padding: 4rem 0;
+  }
+
+  .product-accordion.is-active {
+    min-height: 0;
+  }
+
+  .product-accordion__head {
+    padding: 1.125rem;
+  }
+
+  .product-accordion__body {
+    padding: 0 1.125rem 1.5rem;
+  }
+
+  .products-showcase__visual {
+    min-height: 21rem;
+  }
+
+  .products-showcase__ship {
+    width: min(88%, 24rem);
+  }
+}

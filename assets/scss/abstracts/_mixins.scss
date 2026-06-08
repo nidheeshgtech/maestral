@@ -1,0 +1,33 @@
+@use "tokens" as *;
+
+@mixin tablet {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin small-desktop {
+  @media (min-width: $bp-small-desktop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin container {
+  width: calc(100% - (#{$container-pad-mobile} * 2));
+  max-width: $container-max;
+  margin-inline: auto;
+
+  @include tablet {
+    width: calc(100% - (#{$container-pad-tablet} * 2));
+  }
+
+  @include small-desktop {
+    width: calc(100% - (#{$container-pad-desktop} * 2));
+  }
+}
