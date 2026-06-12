@@ -42,7 +42,7 @@
   width: 58rem;
   max-width: 125%;
   aspect-ratio: 1.2;
-  background: radial-gradient(ellipse at center, rgba(251, 88, 2, 0.32), transparent 62%);
+  background: radial-gradient(ellipse at center, rgba(251, 88, 2, 0.22), transparent 62%);
   opacity: 0.92;
   filter: blur(0.5rem);
 }
@@ -102,28 +102,34 @@
     transform $duration-base $ease-standard;
 }
 
-.stats-card:hover {
-  border-color: rgba(251, 88, 2, 0.66);
-  box-shadow: 0 1.25rem 3rem rgba(251, 88, 2, 0.1);
-  transform: translateY(-0.25rem) scale(1.01);
-}
-
-.stats-card__pattern {
+.stats-card::before {
   position: absolute;
-  top: -1.75rem;
-  right: -2.5rem;
-  width: 11rem;
-  max-width: none;
-  opacity: 0.42;
+  top: -2.0625rem;
+  right: -4.0625rem;
+  width: 11.3675rem;
+  height: 9.56625rem;
+  background: url("../images/number-bg.svg") center / contain no-repeat;
+  content: "";
+  opacity: 0.74;
   pointer-events: none;
   transition:
     opacity $duration-base $ease-standard,
     transform $duration-base $ease-standard;
 }
 
-.stats-card:hover .stats-card__pattern {
-  opacity: 0.7;
+.stats-card:hover {
+  border-color: rgba(251, 88, 2, 0.66);
+  box-shadow: 0 1.25rem 3rem rgba(251, 88, 2, 0.1);
+  transform: translateY(-0.25rem) scale(1.01);
+}
+
+.stats-card:hover::before {
+  opacity: 1;
   transform: translate(-0.25rem, 0.25rem) scale(1.04);
+}
+
+.stats-card__pattern {
+  display: none;
 }
 
 .stats-card__number {

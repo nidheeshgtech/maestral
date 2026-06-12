@@ -26,13 +26,14 @@ include 'includes/header.php';
         <div class="media-listing__toolbar revealme">
           <div class="media-listing__tabs" role="tablist" aria-label="Media filters">
             <button class="media-listing__tab is-active" type="button" data-media-filter="all" role="tab"
-              aria-selected="true">All</button>
+              aria-selected="true"><span class="specular" aria-hidden="true"></span><span class="glow"
+                aria-hidden="true"></span>All</button>
             <button class="media-listing__tab" type="button" data-media-filter="news" role="tab"
-              aria-selected="false">News</button>
+              aria-selected="false"><span class="specular" aria-hidden="true"></span><span class="glow"
+                aria-hidden="true"></span>News</button>
             <button class="media-listing__tab" type="button" data-media-filter="articles" role="tab"
-              aria-selected="false">Articles</button>
-            <button class="media-listing__tab" type="button" data-media-filter="press" role="tab"
-              aria-selected="false">Press Releases</button>
+              aria-selected="false"><span class="specular" aria-hidden="true"></span><span class="glow"
+                aria-hidden="true"></span>Articles</button>
           </div>
 
           <label class="media-search" for="media-search">

@@ -4,46 +4,66 @@
 .site-header {
   position: fixed;
   top: 0;
+  right: 0;
+  left: 0;
   z-index: 20;
-  background: rgba(16, 18, 28, 0);
-  border-bottom: 1px solid rgba(255, 255, 255, 0);
-  backdrop-filter: blur(0);
-  width: 100%;
-  transform: translateY(0);
-  transition:
-    background-color 420ms $ease-standard,
-    border-color 420ms $ease-standard,
-    backdrop-filter 420ms $ease-standard,
-    transform 420ms $ease-standard;
-
-  @include small-desktop {
-    overflow: visible;
-  }
+  overflow: hidden;
+  border-radius: 0;
+  background: transparent;
+  isolation: isolate;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-.site-header.is-scrolled,
+/* liquid glass layer 1 — distorted backdrop blur */
+.site-header::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  /* Safari fallback */
+  backdrop-filter: blur(8px) saturate(150%);
+  backdrop-filter: blur(4px) url(#lg-dist) saturate(150%);
+}
+
+/* liquid glass layer 2 — translucent tint + specular rim */
+.site-header::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+
+  content: "";
+  pointer-events: none;
+}
+
+/* the mobile dropdown menu sits below the pill — release the clip while open */
 .nav-open .site-header {
-  background: rgba(16, 18, 28, 0);
-  border-bottom-color: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(18px);
+  overflow: visible;
+}
+
+/* Safari only: -webkit-named-image() is implemented by no other engine */
+@supports (background: -webkit-named-image(i)) {
+  .site-header {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
 }
 
 .navbar {
   position: relative;
+  z-index: 2;
   display: flex;
   min-height: 5.5rem;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 0.75rem 1rem;
-
-  @include tablet {
-    padding-inline: 1.5rem;
-  }
+  padding-block: 0.75rem;
 
   @include small-desktop {
     min-height: 7.125rem;
-    padding: 0.75rem 2.5rem;
   }
 }
 
@@ -150,8 +170,8 @@
 .navbar__menu {
   position: absolute;
   top: calc(100% + 0.75rem);
-  right: 1rem;
-  left: 1rem;
+  right: 0;
+  left: 0;
   z-index: 25;
   display: flex;
   flex-direction: column;

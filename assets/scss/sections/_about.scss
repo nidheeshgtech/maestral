@@ -25,7 +25,7 @@
 }
 
 .about-page .site-shell h1.about-title {
-  font-size: clamp(3rem, 8vw, 7.5rem);
+  font-size: clamp(2.5rem, 5vw, 5rem);
   line-height: 0.95;
 }
 
@@ -128,6 +128,10 @@
     box-shadow $duration-base $ease-standard,
     color $duration-base $ease-standard,
     transform $duration-base $ease-standard;
+
+  @media (min-width: 1024px) {
+    margin-bottom: clamp(7rem, 10.5vw, 12.5rem);
+  }
 }
 
 .about-hero__back-icon {
@@ -170,7 +174,7 @@
   max-width: 42rem;
   margin: 1.5rem 0 0;
   color: rgba(244, 247, 249, 0.72);
-  font-size: clamp(1.25rem, 2vw, 2rem);
+  font-size: clamp(1.25rem, 2vw, 1.25rem);
   line-height: 1.35;
 }
 
@@ -425,6 +429,7 @@
 }
 
 .leader-card__image {
+  position: relative;
   height: clamp(22rem, 36vw, 30.75rem);
   overflow: hidden;
   background: $color-navy-500;
@@ -443,14 +448,41 @@
 }
 
 .leader-card__body {
+  position: relative;
   min-height: 9rem;
   display: grid;
   align-content: center;
   gap: 0.75rem;
   padding: 1.25rem;
+  background: #141316;
+  margin-top: 5px;
+}
+
+.leader-card__image::before,
+.leader-card__body::before {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient($color-orange, $color-orange) left top / 1.25rem 2px no-repeat,
+    linear-gradient($color-orange, $color-orange) left top / 2px 1.25rem no-repeat,
+    linear-gradient($color-orange, $color-orange) right top / 1.25rem 2px no-repeat,
+    linear-gradient($color-orange, $color-orange) right top / 2px 1.25rem no-repeat,
+    linear-gradient($color-orange, $color-orange) left bottom / 1.25rem 2px no-repeat,
+    linear-gradient($color-orange, $color-orange) left bottom / 2px 1.25rem no-repeat,
+    linear-gradient($color-orange, $color-orange) right bottom / 1.25rem 2px no-repeat,
+    linear-gradient($color-orange, $color-orange) right bottom / 2px 1.25rem no-repeat;
+  content: "";
+  pointer-events: none;
+}
+
+.leader-card__corners {
+  display: none;
 }
 
 .leader-card__name {
+  position: relative;
+  z-index: 1;
   margin: 0;
   color: $color-white;
   font-size: clamp(1.5rem, 2.6vw, 2.5rem);
@@ -458,6 +490,8 @@
 }
 
 .leader-card__role {
+  position: relative;
+  z-index: 1;
   margin: 0;
   color: $color-orange;
   font-size: 0.9rem;
@@ -476,7 +510,6 @@
   display: grid;
   align-items: start;
   padding: clamp(2rem, 5vw, 5rem);
-  border: 1px solid rgba(251, 88, 2, 0.34);
   background: $color-navy-500;
   isolation: isolate;
 }
@@ -500,9 +533,9 @@
   content: "";
 }
 
-.about-partner__panel:hover::before {
-  transform: scale(1.045);
-}
+// .about-partner__panel:hover::before {
+//   transform: scale(1.045);
+// }
 
 .about-partner--edge .about-partner__panel {
   --partner-bg: url("../images/about/edge-bg.webp");
@@ -532,6 +565,29 @@
   backdrop-filter: blur(14px);
 }
 
+.about-partner__card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(#f4f7f9, #f4f7f9) left top / 1.35rem 0.225rem no-repeat,
+    linear-gradient(#f4f7f9, #f4f7f9) left top / 0.225rem 1.35rem no-repeat,
+    linear-gradient(#f4f7f9, #f4f7f9) right top / 1.35rem 0.225rem no-repeat,
+    linear-gradient(#f4f7f9, #f4f7f9) right top / 0.225rem 1.35rem no-repeat,
+    linear-gradient(#f4f7f9, #f4f7f9) left bottom / 1.35rem 0.225rem no-repeat,
+    linear-gradient(#f4f7f9, #f4f7f9) left bottom / 0.225rem 1.35rem no-repeat,
+    linear-gradient(#f4f7f9, #f4f7f9) right bottom / 1.35rem 0.225rem no-repeat,
+    linear-gradient(#f4f7f9, #f4f7f9) right bottom / 0.225rem 1.35rem no-repeat;
+  content: "";
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.about-partner__card>* {
+  position: relative;
+  z-index: 2;
+}
+
 .about-partner__card p {
   margin: 0 0 1.5rem;
 }
@@ -558,7 +614,7 @@
 
 @media (max-width: 1023px) {
   .about-page .site-shell h1.about-title {
-    font-size: clamp(3rem, 11vw, 5.5rem);
+    font-size: clamp(2.35rem, 8vw, 4rem);
   }
 
   .about-copy {
@@ -700,6 +756,11 @@
 }
 
 @media (max-width: 767px) {
+  .about-page .site-shell h1.about-title {
+    font-size: clamp(2.1rem, 9vw, 3rem);
+    line-height: 1.02;
+  }
+
   .about-page .site-shell h2.about-title {
     margin-bottom: 1.5rem;
   }

@@ -11,7 +11,7 @@
 
 .news-detail-page .site-shell h1.about-title {
   max-width: 67rem;
-  font-size: clamp(2.75rem, 6vw, 5.85rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
 }
 
 .news-detail-banner__row {
@@ -175,7 +175,7 @@
   position: relative;
   display: grid;
   gap: 1rem;
-  padding: clamp(1.5rem, 3vw, 2rem) 0 clamp(3rem, 5vw, 4.5rem);
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5625rem, 2.2vw, 2rem) clamp(3rem, 5vw, 4.5rem);
 }
 
 .news-detail__article::before,
