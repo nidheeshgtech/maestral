@@ -179,13 +179,14 @@
 
 .site-footer__bottom>span {
   position: absolute;
-  top: -0.5rem;
+  top: -0.625rem;
   left: 50%;
-  width: 1rem;
-  height: 1rem;
+  z-index: 1;
+  width: 1.25rem;
+  height: 1.25rem;
   background:
-    linear-gradient($color-orange, $color-orange) center / 1rem 0.125rem no-repeat,
-    linear-gradient($color-orange, $color-orange) center / 0.125rem 1rem no-repeat;
+    linear-gradient($color-orange, $color-orange) center / 1.25rem 0.1875rem no-repeat,
+    linear-gradient($color-orange, $color-orange) center / 0.1875rem 1.25rem no-repeat;
   transform: translateX(-50%);
 }
 
