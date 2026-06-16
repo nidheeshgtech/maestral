@@ -25,7 +25,7 @@
     <div class="site-footer__columns">
       <nav class="site-footer__column" aria-label="Footer navigation">
         <h3>[Navigate]</h3>
-        <a href="index.php">Homegit</a>
+        <a href="index.php">Home</a>
         <a href="about-us.php">About Us</a>
         <a href="#">Capabilities</a>
         <a href="our-products.php">Products</a>
@@ -85,9 +85,9 @@
 <svg style="position:absolute;width:0;height:0" aria-hidden="true">
   <defs>
     <filter id="lg-dist" x="-20%" y="-20%" width="140%" height="140%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise"/>
-      <feGaussianBlur in="noise" stdDeviation="2" result="blurred"/>
-      <feDisplacementMap in="SourceGraphic" in2="blurred" scale="60" xChannelSelector="R" yChannelSelector="G"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise" />
+      <feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
+      <feDisplacementMap in="SourceGraphic" in2="blurred" scale="60" xChannelSelector="R" yChannelSelector="G" />
     </filter>
   </defs>
 </svg>
