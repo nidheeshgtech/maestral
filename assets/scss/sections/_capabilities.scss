@@ -4,7 +4,8 @@
 .capabilities {
   position: relative;
   overflow: hidden;
-  padding-block: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 0;
 
   @include tablet {
     padding-block: 6rem;

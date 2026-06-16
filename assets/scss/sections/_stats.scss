@@ -4,7 +4,8 @@
 .stats-section {
   position: relative;
   overflow: hidden;
-  padding-block: 5rem;
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
 
   @include tablet {
     padding-block: 6rem;

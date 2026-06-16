@@ -160,13 +160,41 @@ function initRevealAnimations() {
     threshold: 0.18,
   });
 
-  revealItems.forEach((item) => revealObserver.observe(item));
+  revealItems.forEach((item) => {
+    // Already scrolled past (above the viewport) on load — e.g. when the page
+    // is refreshed partway down — so reveal it immediately. The observer only
+    // fires for intersecting elements, so otherwise these stay stuck hidden.
+    if (item.getBoundingClientRect().bottom < 0) {
+      gsap.set(item, { y: 0, autoAlpha: 1 });
+      item.classList.add("is-revealed");
+      return;
+    }
+
+    revealObserver.observe(item);
+  });
 }
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initRevealAnimations);
 } else {
   initRevealAnimations();
+}
+
+// Recompute every ScrollTrigger once the full page has loaded (images + fonts)
+// and the browser has restored its scroll position. Without this, triggers are
+// measured before layout settles, so scrubbed/triggered animations (e.g. the
+// stats-section ship) stay stuck at their start values when the page is
+// refreshed partway down.
+function refreshScrollTriggers() {
+  if (window.ScrollTrigger) {
+    ScrollTrigger.refresh();
+  }
+}
+
+window.addEventListener("load", refreshScrollTriggers);
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(refreshScrollTriggers);
 }
 
 function initTitleAnimation() {
@@ -182,6 +210,55 @@ function initTitleAnimation() {
   }
 
   gsap.registerPlugin(ScrollTrigger);
+
+  // Sequenced groups — wherever several .title-animation elements share a
+  // parent, reveal them one after another (first to last) on a single
+  // scrubbed timeline, instead of each animating at the same scroll point.
+  const groups = new Set();
+  titles.forEach((el) => {
+    const parent = el.parentElement;
+    if (parent && parent.querySelectorAll(":scope > .title-animation").length > 1) {
+      groups.add(parent);
+    }
+  });
+
+  groups.forEach((group) => {
+    const paras = group.querySelectorAll(":scope > .title-animation");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: group,
+        start: "top 80%",
+        end: "bottom 65%",
+        scrub: true,
+      },
+    });
+
+    paras.forEach((el) => {
+      if (el.dataset.titleAnimationReady === "true") {
+        return;
+      }
+
+      const split = new SplitType(el, { types: "chars" });
+      el.dataset.titleAnimationReady = "true";
+
+      tl.fromTo(
+        split.chars,
+        { opacity: 0.4 },
+        { opacity: 1, duration: 0.3, stagger: 0.02, ease: "none" }
+      );
+
+      const accent = el.querySelectorAll("span .char, strong .char");
+      if (accent.length) {
+        tl.fromTo(
+          accent,
+          { color: "#ffffff" },
+          { color: "#fb5802", duration: 0.3, stagger: 0.02, ease: "none" },
+          "<"
+        );
+      }
+    });
+  });
 
   titles.forEach((el) => {
     if (el.dataset.titleAnimationReady === "true") {

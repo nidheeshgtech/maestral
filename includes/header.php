@@ -23,7 +23,7 @@ function nav_link($href, $label, $file, $current)
   <meta name="theme-color" content="#07090c">
   <title><?php echo htmlspecialchars($page_title); ?></title>
   <link rel="stylesheet" href="https://use.typekit.net/tso6pul.css">
-  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/main.css?v=<?php echo @filemtime(__DIR__ . '/../assets/css/main.css'); ?>">
 </head>
 
 <body<?php echo $body_class ? ' class="' . htmlspecialchars($body_class) . '"' : ''; ?>>
