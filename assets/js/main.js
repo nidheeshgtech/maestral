@@ -584,15 +584,19 @@ function initProductsAccordion() {
     // Swap the right-side product image (preload first, then cross-fade).
     function swapShip(src) {
       if (!ship || !src || ship.dataset.current === src) return;
-      ship.style.opacity = "0";
+      ship.dataset.current = src;
+
       const preload = new Image();
       preload.onload = () => {
-        ship.src = src;
-        ship.dataset.current = src;
-        ship.style.opacity = "1";
+        // blur + fade the current image out, swap, then sharpen the new one in
+        ship.classList.add("is-swapping");
+        window.setTimeout(() => {
+          ship.src = src;
+          requestAnimationFrame(() => ship.classList.remove("is-swapping"));
+        }, 360);
       };
       preload.onerror = () => {
-        ship.style.opacity = "1";
+        ship.src = src;
       };
       preload.src = src;
     }

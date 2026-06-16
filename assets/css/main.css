@@ -2754,8 +2754,15 @@ figure {
   width: min(78%, 34rem);
   max-width: none;
   transform: translate(-50%, -50%);
-  filter: drop-shadow(0 2rem 2.5rem rgba(0, 0, 0, 0.45));
-  transition: opacity 0.3s ease;
+  /* blur dissolve when the image changes */
+  filter: drop-shadow(0 2rem 2.5rem rgba(0, 0, 0, 0.45)) blur(0);
+  transition: opacity 0.45s ease, filter 0.55s ease;
+}
+
+/* mid-swap: blur out + fade, then the new image sharpens back in */
+.products-showcase__ship.is-swapping {
+  opacity: 0;
+  filter: drop-shadow(0 2rem 2.5rem rgba(0, 0, 0, 0.45)) blur(16px);
 }
 
 /* per-accordion image (injected via JS) — only shown on mobile, under the text */
