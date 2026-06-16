@@ -45,6 +45,15 @@
   aspect-ratio: 1.2;
   background: radial-gradient(ellipse at center, rgba(251, 88, 2, 0.32), transparent 62%);
   filter: blur(0.5rem);
+
+  @include small-desktop {
+    inset: auto auto auto -32%;
+    width: 88rem;
+    max-width: 160%;
+    aspect-ratio: 1.45;
+    background: radial-gradient(ellipse at center, rgba(251, 88, 2, 0.34), transparent 74%);
+    filter: blur(1.25rem);
+  }
 }
 
 .stats-section__ship {
@@ -56,6 +65,7 @@
   pointer-events: none;
   will-change: transform;
   z-index: 1;
+  bottom: -36px;
 
   @include small-desktop {
     left: -10%;

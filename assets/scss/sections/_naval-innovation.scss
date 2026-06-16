@@ -140,6 +140,7 @@
   max-width: 35rem;
   justify-self: start;
   text-align: left;
+  align-self: start;
 }
 
 .naval-innovation__side--left {
@@ -200,6 +201,10 @@
   font-size: clamp(0.9375rem, 1.1vw, 1.125rem);
   line-height: 1.7;
   text-align: left;
+
+  @include small-desktop {
+    padding-top: 9.375rem; /* ~150px, desktop only */
+  }
 }
 
 .naval-innovation__content p {

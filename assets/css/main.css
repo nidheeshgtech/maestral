@@ -1207,6 +1207,7 @@ h2 strong {
   max-width: 35rem;
   justify-self: start;
   text-align: left;
+  align-self: start;
 }
 
 .naval-innovation__side--left {
@@ -1267,6 +1268,11 @@ h2 strong {
   font-size: clamp(0.9375rem, 1.1vw, 1.125rem);
   line-height: 1.7;
   text-align: left;
+}
+@media (min-width: 1024px) {
+  .naval-innovation__content {
+    padding-top: 9.375rem; /* ~150px, desktop only */
+  }
 }
 
 .naval-innovation__content p {
@@ -1550,6 +1556,16 @@ h2 strong {
   background: radial-gradient(ellipse at center, rgba(251, 88, 2, 0.32), transparent 62%);
   filter: blur(0.5rem);
 }
+@media (min-width: 1024px) {
+  .stats-section__glow {
+    inset: auto auto auto -32%;
+    width: 88rem;
+    max-width: 160%;
+    aspect-ratio: 1.45;
+    background: radial-gradient(ellipse at center, rgba(251, 88, 2, 0.34), transparent 74%);
+    filter: blur(1.25rem);
+  }
+}
 
 .stats-section__ship {
   position: absolute;
@@ -1560,6 +1576,7 @@ h2 strong {
   pointer-events: none;
   will-change: transform;
   z-index: 1;
+  bottom: -36px;
 }
 @media (min-width: 1024px) {
   .stats-section__ship {
