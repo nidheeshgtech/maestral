@@ -30,7 +30,9 @@
 }
 
 /* ─── liquid glass pill tabs (4 layers: blur / tint / specular / glow) ─── */
-.media-listing__tab {
+/* shared by .about-hero__back so the back button matches the tabs exactly */
+.media-listing__tab,
+.about-hero__back {
   position: relative;
   display: inline-flex;
   min-height: 3rem;
@@ -59,7 +61,9 @@
 }
 
 /* layer 1 — liquid distortion + blur of whatever is behind */
-.media-listing__tab::before {
+.media-listing__tab::before,
+.about-hero__back::before,
+.media-search::before {
   position: absolute;
   z-index: -3;
   inset: 0;
@@ -70,17 +74,21 @@
 }
 
 /* layer 2 — tint overlay */
-.media-listing__tab::after {
+.media-listing__tab::after,
+.about-hero__back::after,
+.media-search::after {
   position: absolute;
   z-index: -2;
   inset: 0;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgb(31 27 27 / 22%);
   content: "";
   transition: background 0.3s ease;
 }
 
 /* layer 3 — specular rim highlight */
-.media-listing__tab .specular {
+.media-listing__tab .specular,
+.about-hero__back .specular,
+.media-search .specular {
   position: absolute;
   z-index: -1;
   inset: 0;
@@ -92,35 +100,41 @@
 }
 
 /* layer 4 — mouse-tracking glow blob (--mx/--my set via JS) */
-.media-listing__tab .glow {
+.media-listing__tab .glow,
+.about-hero__back .glow,
+.media-search .glow {
   position: absolute;
   z-index: -1;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(120px circle at var(--mx, 50%) var(--my, 50%),
-      rgba(255, 255, 255, 0.45),
-      transparent 60%);
+  background: radial-gradient(120px circle at var(--mx, 50%) var(--my, 50%), rgb(190 190 190 / 45%), transparent 60%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
 }
 
-.media-listing__tab:hover .glow {
+.media-listing__tab:hover .glow,
+.about-hero__back:hover .glow,
+.media-search:hover .glow,
+.media-search:focus-within .glow {
   opacity: 1;
 }
 
 /* springy press feedback */
-.media-listing__tab:hover {
+.media-listing__tab:hover,
+.about-hero__back:hover {
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
   transform: scale(1.06);
 }
 
-.media-listing__tab:active {
+.media-listing__tab:active,
+.about-hero__back:active {
   transform: scale(0.94);
   transition-duration: 0.1s;
 }
 
-.media-listing__tab:focus-visible {
+.media-listing__tab:focus-visible,
+.about-hero__back:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.9);
   outline-offset: 3px;
 }
@@ -130,56 +144,34 @@
   background: $color-orange;
 }
 
-/* ─── search field keeps its frosted pill look ─── */
+/* ─── search field: same liquid glass treatment as the tabs ─── */
 .media-search {
   position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.018) 72%),
-    rgba(255, 255, 255, 0.04);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-    0 0.45rem 1.25rem rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(12px) saturate(1.18);
-  -webkit-backdrop-filter: blur(12px) saturate(1.18);
-}
-
-.media-search::before {
-  position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.13), transparent 44%);
-  content: "";
-  opacity: 0.48;
-  pointer-events: none;
-}
-
-.media-search {
   display: flex;
   width: min(100%, 26.3125rem);
   min-height: 3rem;
   align-items: center;
   gap: 0.75rem;
   padding: 0 1.35rem 0 1.85rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
   color: #818181;
-  transition:
-    border-color $duration-base $ease-standard,
-    background-color $duration-base $ease-standard,
-    box-shadow $duration-base $ease-standard;
+  isolation: isolate;
+  transition: box-shadow 0.4s ease;
 }
 
+/* focus — orange tint on the glass + ring, mirroring the active tab */
 .media-search:focus-within {
-  border-color: rgba(251, 88, 2, 0.55);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035) 58%),
-    rgba(255, 255, 255, 0.055);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 0 0 3px rgba(251, 88, 2, 0.1),
-    0 0.75rem 2rem rgba(0, 0, 0, 0.24);
+    0 0 0 3px rgba(251, 88, 2, 0.12),
+    0 10px 32px rgba(0, 0, 0, 0.28);
+}
+
+.media-search:focus-within::after {
+  background: rgb(36 36 35 / 22%);
 }
 
 .media-search input {
@@ -340,6 +332,7 @@
   margin-top: clamp(1.5rem, 3vw, 3rem);
 }
 
+/* liquid glass call-to-action — orange tinted (blur + tint + specular rim) */
 .media-card__link {
   position: relative;
   display: inline-flex;
@@ -347,11 +340,20 @@
   gap: 0.75rem;
   min-height: 2.75rem;
   padding: 0.35rem 0.35rem 0.35rem 1.1rem;
-  border: 1px solid rgba(251, 88, 2, 0.38);
+  overflow: hidden;
+  border: 0px none;
   border-radius: 999px;
-  color: $color-orange;
+  background: rgb(15 15 15 / 20%);
+  box-shadow:
+    inset 1px 1px 1px rgba(255, 255, 255, 0.45),
+    inset 0 0 6px rgba(255, 255, 255, 0.2),
+    0 6px 24px rgba(0, 0, 0, 0.2);
+  color: $color-white;
   font-size: 1rem;
   line-height: 1.3;
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+  backdrop-filter: blur(6px) saturate(130%);
+  backdrop-filter: blur(4px) url(#lg-dist) saturate(130%);
   transition:
     border-color $duration-base $ease-standard,
     color $duration-base $ease-standard,
@@ -364,6 +366,7 @@
   width: 1rem;
   height: 1rem;
   transition: transform $duration-base $ease-standard;
+  z-index: 1;
 }
 
 .media-card__link::after {
@@ -388,20 +391,25 @@
 }
 
 .media-card__link:hover {
-  border-color: rgba(251, 88, 2, 0.72);
-  background: rgba(251, 88, 2, 0.1);
-  box-shadow: 0 0.75rem 1.75rem rgba(251, 88, 2, 0.12);
+  border-color: rgba(251, 88, 2, 0.8);
+  background: rgb(72 72 72 / 34%);
+  box-shadow:
+    inset 1px 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 0 8px rgba(255, 255, 255, 0.25),
+    0 0.75rem 1.75rem rgba(251, 88, 2, 0.3);
   color: $color-white;
   transform: translateY(-0.125rem);
 }
 
 .media-card__link:hover svg {
   transform: translateX(0.18rem);
+
 }
 
 .media-card__link:hover::after {
   background: $color-orange-hover;
   transform: scale(1.04);
+
 }
 
 .media-card time {

@@ -19,29 +19,6 @@
   }
 }
 
-.who-we-are__divider {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 8;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.34);
-}
-
-.who-we-are__divider::after {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 1rem;
-  height: 1rem;
-  background:
-    linear-gradient($color-orange, $color-orange) center / 1rem 0.125rem no-repeat,
-    linear-gradient($color-orange, $color-orange) center / 0.125rem 1rem no-repeat;
-  content: "";
-  transform: translate(-50%, 50%);
-}
-
 .who-we-are::before {
   position: absolute;
   inset: auto -18rem -10rem -18rem;

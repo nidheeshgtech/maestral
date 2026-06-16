@@ -106,17 +106,25 @@
   line-height: 1.3;
 }
 
+/* form fields — same liquid glass treatment as the media tabs        */
+/* (blur + tint + specular rim applied directly, since form controls   */
+/*  can't host the ::before/.specular/.glow child layers)              */
 .contact-field input,
 .contact-field textarea {
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  border: 0;
+  background: rgb(31 27 27 / 17%);
+  box-shadow:
+    inset 1px 1px 0px rgba(255, 255, 255, 0.55), inset 0 0 2px rgba(255, 255, 255, 0.65), 0 6px 24px rgba(0, 0, 0, 0.2);
   color: $color-white;
   font: inherit;
   font-size: 1.25rem;
   outline: 0;
+  -webkit-backdrop-filter: blur(6px) saturate(130%);
+  backdrop-filter: blur(6px) saturate(130%);
+  backdrop-filter: blur(4px) url(#lg-dist) saturate(130%);
+  resize: none;
   transition:
-    border-color $duration-base $ease-standard,
     background-color $duration-base $ease-standard,
     box-shadow $duration-base $ease-standard;
 }
@@ -132,6 +140,7 @@
   resize: vertical;
   padding: 1.5rem 2rem;
   border-radius: 1rem;
+  resize: none;
 }
 
 .contact-field input::placeholder,
@@ -140,11 +149,15 @@
   opacity: 1;
 }
 
+/* focus — orange-tinted glass + ring, keeping the specular rim */
 .contact-field input:focus,
 .contact-field textarea:focus {
-  border-color: rgba(251, 88, 2, 0.58);
-  background: rgba(255, 255, 255, 0.065);
-  box-shadow: 0 0 0 3px rgba(251, 88, 2, 0.12);
+  background: rgb(251 88 2 / 12%);
+  box-shadow:
+    inset 1px 1px 1px rgba(255, 255, 255, 0.75),
+    inset 0 0 6px rgba(255, 255, 255, 0.35),
+    0 0 0 3px rgba(251, 88, 2, 0.12),
+    0 10px 32px rgba(0, 0, 0, 0.28);
 }
 
 .contact-form .btn {
@@ -161,6 +174,7 @@
 }
 
 @media (max-width: 1023px) {
+
   .contact-panel::before,
   .contact-panel::after {
     display: none;

@@ -66,7 +66,6 @@ include 'includes/header.php';
         </div>
       </div>
     </div>
-    <div class="who-we-are__divider" aria-hidden="true"></div>
   </section>
 
   <div class="naval-innovation-wrap">

@@ -8,6 +8,7 @@ include 'includes/header.php';
   <section class="about-hero about-section page-banner js-page-banner" aria-label="About Maestral">
     <div class="about-hero__content container">
       <a class="about-hero__back revealme" href="index.php">
+        <span class="specular" aria-hidden="true"></span><span class="glow" aria-hidden="true"></span>
         <span class="about-hero__back-icon" aria-hidden="true">
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none" focusable="false">
             <path d="M7.4 1L1 7M1 7L7.4 13M1 7H17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"

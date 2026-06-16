@@ -577,8 +577,8 @@ function initMediaFilters() {
     applyFilters();
   });
 
-  // mouse-tracking specular glow on the liquid glass tabs
-  document.querySelectorAll(".media-listing__tab").forEach((el) => {
+  // mouse-tracking specular glow on the liquid glass tabs + back button + search
+  document.querySelectorAll(".media-listing__tab, .about-hero__back, .media-search").forEach((el) => {
     el.addEventListener("pointermove", (e) => {
       const r = el.getBoundingClientRect();
       el.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");

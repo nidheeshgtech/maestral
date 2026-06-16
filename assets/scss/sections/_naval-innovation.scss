@@ -27,6 +27,32 @@
   position: relative;
 }
 
+/* top boundary divider — line + centered orange plus marker */
+.naval-innovation-wrap::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.34);
+  content: "";
+}
+
+.naval-innovation-wrap::after {
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  z-index: 10;
+  width: 1rem;
+  height: 1rem;
+  background:
+    linear-gradient($color-orange, $color-orange) center / 1rem 0.125rem no-repeat,
+    linear-gradient($color-orange, $color-orange) center / 0.125rem 1rem no-repeat;
+  content: "";
+  transform: translateX(-50%);
+}
+
 .naval-innovation__divider {
   position: absolute;
   bottom: -0.5rem;
