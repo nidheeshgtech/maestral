@@ -2,7 +2,9 @@
 
 .products-showcase {
   position: relative;
+  /* clip (not hidden) so the sticky image below isn't trapped in a scroll container */
   overflow: hidden;
+  overflow: clip;
   padding: clamp(4rem, 7vw, 6.25rem) 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.28);
   background: $color-black;
@@ -198,11 +200,28 @@
   max-width: none;
   transform: translate(-50%, -50%);
   filter: drop-shadow(0 2rem 2.5rem rgba(0, 0, 0, 0.45));
+  transition: opacity 0.3s ease;
+}
+
+/* per-accordion image (injected via JS) — only shown on mobile, under the text */
+.product-accordion__image {
+  display: none;
+  width: 100%;
+  height: auto;
+  margin-top: 1.25rem;
+  border-radius: 0.5rem;
 }
 
 @media (min-width: 1024px) {
   .products-showcase__inner {
     grid-template-columns: minmax(0, 1fr) minmax(25rem, 0.95fr);
+  }
+
+  /* keep the product image in view while scrolling the accordion list */
+  .products-showcase__visual {
+    position: sticky;
+    top: 8rem;
+    align-self: start;
   }
 }
 
@@ -223,11 +242,12 @@
     padding: 0 1.125rem 1.5rem;
   }
 
+  /* hide the shared right-side image on mobile; each item shows its own below the text */
   .products-showcase__visual {
-    min-height: 21rem;
+    display: none;
   }
 
-  .products-showcase__ship {
-    width: min(88%, 24rem);
+  .product-accordion__image {
+    display: block;
   }
 }

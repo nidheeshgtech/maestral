@@ -112,7 +112,7 @@
 
 .capabilities__visual {
   position: relative;
-  min-height: 22rem;
+  min-height: auto;
 
   @include tablet {
     min-height: 34rem;
@@ -144,14 +144,20 @@
 }
 
 .capabilities__vessel {
-  right: -8%;
-  bottom: 8%;
-  width: min(130%, 82rem);
+  right: 0;
+  bottom: auto;
+  width: 100%;
   filter: drop-shadow(0 2rem 3rem rgba(0, 0, 0, 0.52));
+
+  @include tablet {
+    right: -8%;
+    bottom: 8%;
+    width: min(130%, 82rem);
+  }
 
   @include small-desktop {
     right: -15%;
     bottom: 11%;
-    width: min(112%, 82rem);
+    width: min(132%, 94rem);
   }
 }

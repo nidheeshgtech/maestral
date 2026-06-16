@@ -48,6 +48,7 @@ include 'includes/header.php';
           capabilities with systems integration solutions covering weapons, ISR sensors, and command and control
           systems.</p>
       </div>
+      <img class="about-what__image" src="assets/images/about/what-bg.webp" alt="" aria-hidden="true">
     </div>
   </section>
 
@@ -189,15 +190,17 @@ include 'includes/header.php';
     </div>
   </section>
 
-  <section class="about-purpose about-section" aria-label="Our Purpose">
+
+</main>
+
+<div class="services-footer-bg">
+  <div class="services-footer-bg-overlay"></div>
+
+  <section class="about-purpose about-section bg-transparent z-2" aria-label="Our Purpose">
     <div class="about-purpose__inner container revealme">
       <h2 class="about-title">Our Purpose<span class="text-accent">.</span></h2>
       <p class="about-purpose__text title-animation">To build advanced, future-ready surface and subsurface naval
         vessels ready to meet the evolving security needs of military and coast guard fleets around the world.</p>
     </div>
   </section>
-</main>
-
-<div class="services-footer-bg">
-  <div class="services-footer-bg-overlay"></div>
   <?php include 'includes/footer.php'; ?>

@@ -25,7 +25,7 @@ include 'includes/header.php';
     <section class="products-showcase" aria-label="Naval products">
       <div class="products-showcase__inner container">
         <div class="products-showcase__list revealme js-products-accordion">
-          <article class="product-accordion">
+          <article class="product-accordion" data-product-image="assets/images/products/p50mr.webp">
             <button class="product-accordion__head" type="button" aria-expanded="false">
               <span class="product-accordion__label">P50MR Fast Patrol Boat</span>
               <span class="product-accordion__icon" aria-hidden="true"></span>
@@ -42,7 +42,7 @@ include 'includes/header.php';
             </div>
           </article>
 
-          <article class="product-accordion is-active">
+          <article class="product-accordion is-active" data-product-image="assets/images/products/fcx07.webp">
             <button class="product-accordion__head" type="button" aria-expanded="true">
               <span class="product-accordion__label">FCX07 Offshore Patrol Vessel</span>
               <span class="product-accordion__icon" aria-hidden="true"></span>
@@ -95,7 +95,7 @@ include 'includes/header.php';
             </div>
           </article>
 
-          <article class="product-accordion">
+          <article class="product-accordion" data-product-image="assets/images/products/fcx15.webp">
             <button class="product-accordion__head" type="button" aria-expanded="false">
               <span class="product-accordion__label">FCX15 Blue Sea Patrol Vessel</span>
               <span class="product-accordion__icon" aria-hidden="true"></span>
@@ -112,7 +112,7 @@ include 'includes/header.php';
             </div>
           </article>
 
-          <article class="product-accordion">
+          <article class="product-accordion" data-product-image="assets/images/products/fcx20.webp">
             <button class="product-accordion__head" type="button" aria-expanded="false">
               <span class="product-accordion__label">FCX20 Corvette</span>
               <span class="product-accordion__icon" aria-hidden="true"></span>
@@ -129,7 +129,7 @@ include 'includes/header.php';
             </div>
           </article>
 
-          <article class="product-accordion">
+          <article class="product-accordion" data-product-image="assets/images/products/fcx30.webp">
             <button class="product-accordion__head" type="button" aria-expanded="false">
               <span class="product-accordion__label">FCX30 Light Frigate</span>
               <span class="product-accordion__icon" aria-hidden="true"></span>
@@ -146,7 +146,7 @@ include 'includes/header.php';
             </div>
           </article>
 
-          <article class="product-accordion">
+          <article class="product-accordion" data-product-image="assets/images/products/oceanographic-vessel.webp">
             <button class="product-accordion__head" type="button" aria-expanded="false">
               <span class="product-accordion__label">Oceanographic Vessel</span>
               <span class="product-accordion__icon" aria-hidden="true"></span>
@@ -163,7 +163,7 @@ include 'includes/header.php';
             </div>
           </article>
 
-          <article class="product-accordion">
+          <article class="product-accordion" data-product-image="assets/images/products/lpd-san-giorgio.webp">
             <button class="product-accordion__head" type="button" aria-expanded="false">
               <span class="product-accordion__label">LPD San Giorgio Class</span>
               <span class="product-accordion__icon" aria-hidden="true"></span>
@@ -180,7 +180,7 @@ include 'includes/header.php';
             </div>
           </article>
 
-          <article class="product-accordion">
+          <article class="product-accordion" data-product-image="assets/images/products/offshore-service-vessel.webp">
             <button class="product-accordion__head" type="button" aria-expanded="false">
               <span class="product-accordion__label">Offshore Service Vessel</span>
               <span class="product-accordion__icon" aria-hidden="true"></span>
@@ -199,7 +199,8 @@ include 'includes/header.php';
         </div>
 
         <div class="products-showcase__visual revealme" aria-hidden="true">
-          <img class="products-showcase__ship" src="assets/images/about/product-img.svg" alt="">
+          <img class="products-showcase__ship" src="assets/images/products/fcx07.webp" alt="" onerror="this.onerror=null;this.src='assets/images/about/product-img.svg'">
+
         </div>
       </div>
     </section>

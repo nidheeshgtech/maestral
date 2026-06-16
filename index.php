@@ -80,7 +80,10 @@ include 'includes/header.php';
         </div>
 
         <div class="naval-innovation__asset-wrap">
-          <img class="naval-innovation__asset" src="assets/images/naval-innovation-asset.png" alt="">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/images/naval-innovation-asset-mobile.webp">
+            <img class="naval-innovation__asset" src="assets/images/naval-innovation-asset.png" alt="">
+          </picture>
         </div>
 
         <div class="naval-innovation__content naval-innovation__side naval-innovation__side--right revealme">

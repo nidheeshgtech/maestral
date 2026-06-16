@@ -145,6 +145,27 @@
   transform: translateX(-0.125rem);
 }
 
+/* smaller liquid-glass back button on mobile.
+   Extra .about-hero specificity so it beats the shared sizing in _media.scss
+   (which is imported later than this file). */
+@media (max-width: 767px) {
+  .about-hero .about-hero__back {
+    min-height: 2.5rem;
+    gap: 0.5rem;
+    padding: 0.3rem 1.1rem 0.3rem 0.4rem;
+    font-size: 0.75rem;
+  }
+
+  .about-hero .about-hero__back-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .about-hero .about-hero__back-icon svg {
+    width: 0.95rem;
+  }
+}
+
 .about-hero__subtitle {
   max-width: 42rem;
   margin: 1.5rem 0 0;
@@ -201,6 +222,11 @@
   font-size: clamp(0.875rem, 0.7vw + 0.2rem, 1.125rem);
   line-height: 1.6;
   opacity: 0.8;
+}
+
+/* in-flow version of the what-bg image, only shown on mobile (see below) */
+.about-what__image {
+  display: none;
 }
 
 .about-mosaic {
@@ -408,6 +434,7 @@
   height: clamp(22rem, 36vw, 30.75rem);
   overflow: hidden;
   background: $color-navy-500;
+  padding: 3px;
 }
 
 .leader-card__image img {
@@ -763,12 +790,19 @@
 
   .about-what {
     padding-top: 4rem;
-    padding-bottom: 12rem;
+    padding-bottom: 0;
   }
 
-  .about-what::before {
-    height: 22rem;
-    background-size: auto 100%;
+  /* drop the background image; it's rendered in-flow below the text instead */
+  .about-what::before,
+  .about-what::after {
+    content: none;
+  }
+
+  .about-what__image {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .about-mosaic__image--side {

@@ -239,7 +239,7 @@ function initTitleAnimation() {
         return;
       }
 
-      const split = new SplitType(el, { types: "chars" });
+      const split = new SplitType(el, { types: "words, chars" });
       el.dataset.titleAnimationReady = "true";
 
       tl.fromTo(
@@ -265,7 +265,7 @@ function initTitleAnimation() {
       return;
     }
 
-    const split = new SplitType(el, { types: "chars" });
+    const split = new SplitType(el, { types: "words, chars" });
     const scrollConfig = {
       trigger: el,
       start: "top 80%",
@@ -327,6 +327,9 @@ function initNavalInnovation() {
   let currentY = 0;
   let targetX = 0;
   let targetY = 0;
+  let lastX = null;
+  let lastY = null;
+  let inView = false;
 
   section.addEventListener("mousemove", (event) => {
     const rect = section.getBoundingClientRect();
@@ -339,9 +342,28 @@ function initNavalInnovation() {
     targetY = 0;
   });
 
-  function animateParallax() {
-    currentX += (targetX - currentX) * 0.08;
-    currentY += (targetY - currentY) * 0.08;
+  // Only run the parallax math while the section is actually on screen, so its
+  // heavy 3D transforms/repaints don't compete with smooth scrolling elsewhere.
+  const observer = new IntersectionObserver((entries) => {
+    inView = entries[0].isIntersecting;
+  }, { threshold: 0 });
+  observer.observe(section);
+
+  function updateParallax() {
+    if (!inView) {
+      return;
+    }
+
+    // Ease toward the target, snapping the residual so we can come to rest.
+    currentX = Math.abs(targetX - currentX) < 0.0005 ? targetX : currentX + (targetX - currentX) * 0.08;
+    currentY = Math.abs(targetY - currentY) < 0.0005 ? targetY : currentY + (targetY - currentY) * 0.08;
+
+    // Nothing changed since last frame → skip the style writes (and the repaint).
+    if (currentX === lastX && currentY === lastY) {
+      return;
+    }
+    lastX = currentX;
+    lastY = currentY;
 
     section.style.setProperty("--parallax-x", `${currentX * -18}px`);
     section.style.setProperty("--parallax-y", `${currentY * -12}px`);
@@ -349,11 +371,18 @@ function initNavalInnovation() {
     section.style.setProperty("--grid-rotate-y", `${currentX * -2.4}deg`);
     section.style.setProperty("--asset-x", `${currentX * 10}px`);
     section.style.setProperty("--asset-y", `${currentY * 7}px`);
-
-    requestAnimationFrame(animateParallax);
   }
 
-  animateParallax();
+  // Use GSAP's shared ticker instead of spinning up a second RAF loop.
+  if (window.gsap) {
+    gsap.ticker.add(updateParallax);
+  } else {
+    const raf = () => {
+      updateParallax();
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
 }
 
 if (document.readyState === "loading") {
@@ -549,6 +578,24 @@ function initProductsAccordion() {
 
   accordions.forEach((accordion) => {
     const cards = Array.from(accordion.querySelectorAll(".product-accordion"));
+    const showcase = accordion.closest(".products-showcase");
+    const ship = showcase ? showcase.querySelector(".products-showcase__ship") : null;
+
+    // Swap the right-side product image (preload first, then cross-fade).
+    function swapShip(src) {
+      if (!ship || !src || ship.dataset.current === src) return;
+      ship.style.opacity = "0";
+      const preload = new Image();
+      preload.onload = () => {
+        ship.src = src;
+        ship.dataset.current = src;
+        ship.style.opacity = "1";
+      };
+      preload.onerror = () => {
+        ship.style.opacity = "1";
+      };
+      preload.src = src;
+    }
 
     cards.forEach((card) => {
       const body = card.querySelector(".product-accordion__body");
@@ -559,6 +606,18 @@ function initProductsAccordion() {
       inner.className = "product-accordion__body-inner";
       while (body.firstChild) inner.appendChild(body.firstChild);
       body.appendChild(inner);
+
+      // Per-item image shown under the text on mobile (hidden on desktop, where
+      // the shared right-side image swaps instead).
+      const src = card.dataset.productImage;
+      if (src) {
+        const img = document.createElement("img");
+        img.className = "product-accordion__image";
+        img.src = src;
+        img.alt = "";
+        img.setAttribute("aria-hidden", "true");
+        inner.appendChild(img);
+      }
 
       body.removeAttribute("hidden");
       body.style.height = card.classList.contains("is-active") ? "auto" : "0";
@@ -586,6 +645,7 @@ function initProductsAccordion() {
           card.classList.add("is-active");
           button.setAttribute("aria-expanded", "true");
           expandBody(body);
+          swapShip(card.dataset.productImage);
         } else {
           card.classList.remove("is-active");
           button.setAttribute("aria-expanded", "false");
@@ -652,6 +712,33 @@ function initMediaFilters() {
 
     search?.addEventListener("input", applyFilters);
     applyFilters();
+  });
+
+  // mobile "Select Media" dropdown — toggles the filter options open/closed
+  document.querySelectorAll(".js-media-dropdown").forEach((dropdown) => {
+    const toggle = dropdown.querySelector(".media-listing__tabs-toggle");
+    if (!toggle) return;
+
+    const setOpen = (open) => {
+      dropdown.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    };
+
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setOpen(!dropdown.classList.contains("is-open"));
+    });
+
+    dropdown.querySelectorAll(".media-listing__tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        toggle.textContent = tab.textContent.trim() || "Select Media";
+        setOpen(false);
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!dropdown.contains(event.target)) setOpen(false);
+    });
   });
 
   // mouse-tracking specular glow on the liquid glass tabs + back button + search

@@ -45,12 +45,11 @@
 .geographic-reach__map {
   width: 100%;
   max-width: none;
-  min-height: 28rem;
-  object-fit: cover;
   object-position: center top;
   pointer-events: none;
 
   @include tablet {
     min-height: 40rem;
+    object-fit: cover;
   }
 }

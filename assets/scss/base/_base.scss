@@ -90,3 +90,10 @@ h2 strong {
   transform: translateY(0);
   will-change: auto;
 }
+
+/* SplitType breaks text into per-character spans for the title animation.
+   Keeping each word as an atomic inline-block stops the browser from wrapping
+   mid-word (letters were breaking across lines on small screens). */
+.title-animation .word {
+  display: inline-block;
+}

@@ -25,16 +25,19 @@ include 'includes/header.php';
     <section class="media-listing" aria-label="Latest media and news">
       <div class="media-listing__inner container">
         <div class="media-listing__toolbar revealme">
-          <div class="media-listing__tabs" role="tablist" aria-label="Media filters">
-            <button class="media-listing__tab is-active" type="button" data-media-filter="all" role="tab"
-              aria-selected="true"><span class="specular" aria-hidden="true"></span><span class="glow"
-                aria-hidden="true"></span>All</button>
-            <button class="media-listing__tab" type="button" data-media-filter="news" role="tab"
-              aria-selected="false"><span class="specular" aria-hidden="true"></span><span class="glow"
-                aria-hidden="true"></span>News</button>
-            <button class="media-listing__tab" type="button" data-media-filter="articles" role="tab"
-              aria-selected="false"><span class="specular" aria-hidden="true"></span><span class="glow"
-                aria-hidden="true"></span>Articles</button>
+          <div class="media-listing__tabs js-media-dropdown" role="tablist" aria-label="Media filters">
+            <button class="media-listing__tabs-toggle" type="button" aria-haspopup="true" aria-expanded="false">Select Media</button>
+            <div class="media-listing__tabs-panel">
+              <button class="media-listing__tab is-active" type="button" data-media-filter="all" role="tab"
+                aria-selected="true"><span class="specular" aria-hidden="true"></span><span class="glow"
+                  aria-hidden="true"></span>All</button>
+              <button class="media-listing__tab" type="button" data-media-filter="news" role="tab"
+                aria-selected="false"><span class="specular" aria-hidden="true"></span><span class="glow"
+                  aria-hidden="true"></span>News</button>
+              <button class="media-listing__tab" type="button" data-media-filter="articles" role="tab"
+                aria-selected="false"><span class="specular" aria-hidden="true"></span><span class="glow"
+                  aria-hidden="true"></span>Articles</button>
+            </div>
           </div>
 
           <label class="media-search" for="media-search">
@@ -58,6 +61,7 @@ include 'includes/header.php';
               <span class="media-card__badge">News</span>
             </a>
             <div class="media-card__content">
+              <time class="media-card__date" datetime="2026-04-16">16 April 2026</time>
               <h2 class="media-card__title">EDGE Strengthens Partnership with Brazilian Army for Operational Evaluation
                 of Next-Generation Weaponry</h2>
               <p class="media-card__excerpt">Collaboration drives innovation, training, and the combat capability of the
@@ -70,7 +74,6 @@ include 'includes/header.php';
                       stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </a>
-                <time datetime="2026-04-16">16 April 2026</time>
               </div>
             </div>
           </article>
@@ -82,6 +85,7 @@ include 'includes/header.php';
               <span class="media-card__badge">Articles</span>
             </a>
             <div class="media-card__content">
+              <time class="media-card__date" datetime="2026-04-16">16 April 2026</time>
               <h2 class="media-card__title">EDGE and Indra Establish Partnership for Local Radar Production in Brazil
               </h2>
               <p class="media-card__excerpt">The initiative aims to foster industrial development, technology transfer,
@@ -94,7 +98,6 @@ include 'includes/header.php';
                       stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </a>
-                <time datetime="2026-04-16">16 April 2026</time>
               </div>
             </div>
           </article>
@@ -106,6 +109,7 @@ include 'includes/header.php';
               <span class="media-card__badge">News</span>
             </a>
             <div class="media-card__content">
+              <time class="media-card__date" datetime="2026-04-16">16 April 2026</time>
               <h2 class="media-card__title">EDGE and the Brazilian Navy Strengthen Strategic Cooperation in Cyber Defence
                 Capabilities</h2>
               <p class="media-card__excerpt">This initiative represents another significant milestone in EDGE's
@@ -118,7 +122,6 @@ include 'includes/header.php';
                       stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </a>
-                <time datetime="2026-04-16">16 April 2026</time>
               </div>
             </div>
           </article>
