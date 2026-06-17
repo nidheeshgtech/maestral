@@ -234,15 +234,6 @@
     align-self: start;
     top: calc(50vh + 3.5625rem - clamp(11rem, 23vw, 22.375rem));
   }
-
-  /* JS pins this (fixed, dead-centered) while the section owns the middle of
-     the screen, so it stays centered even at the end of the accordion list.
-     left/width/top are all set inline (top in JS to avoid clashing with the
-     reveal animation's transform). */
-  .products-showcase__visual.is-pinned {
-    position: fixed;
-    align-self: auto;
-  }
 }
 
 /* slightly smaller showcase visual on laptop screens */
