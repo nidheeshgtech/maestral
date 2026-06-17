@@ -2794,12 +2794,24 @@ figure {
 @media (min-width: 1024px) {
   .products-showcase__inner {
     grid-template-columns: minmax(0, 1fr) minmax(25rem, 0.95fr);
+    align-items: start;
   }
-  /* keep the product image in view while scrolling the accordion list */
+  /* keep the product image pinned in the vertical middle of the screen
+     while scrolling the accordion list */
   .products-showcase__visual {
     position: sticky;
-    top: 8rem;
     align-self: start;
+    top: calc(50vh - clamp(11rem, 23vw, 22.375rem));
+  }
+}
+/* slightly smaller showcase visual on laptop screens, nudged a bit lower */
+@media (min-width: 1100px) and (max-width: 1800px) {
+  .products-showcase__visual {
+    min-height: clamp(20rem, 34vw, 34rem);
+    top: calc(50vh - clamp(10rem, 17vw, 17rem) + 4rem);
+  }
+  .products-showcase__ship {
+    width: min(66%, 27rem);
   }
 }
 @media (max-width: 767px) {
