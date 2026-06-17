@@ -2796,19 +2796,19 @@ figure {
     grid-template-columns: minmax(0, 1fr) minmax(25rem, 0.95fr);
     align-items: start;
   }
-  /* keep the product image pinned in the vertical middle of the screen
-     while scrolling the accordion list */
+  /* pin the product image in the vertical middle of the area below the fixed
+     header (~7.125rem tall) while scrolling, so its top never hides behind it */
   .products-showcase__visual {
     position: sticky;
     align-self: start;
-    top: calc(50vh - clamp(11rem, 23vw, 22.375rem));
+    top: calc(50vh + 3.5625rem - clamp(11rem, 23vw, 22.375rem));
   }
 }
-/* slightly smaller showcase visual on laptop screens, nudged a bit lower */
+/* slightly smaller showcase visual on laptop screens */
 @media (min-width: 1100px) and (max-width: 1800px) {
   .products-showcase__visual {
     min-height: clamp(20rem, 34vw, 34rem);
-    top: calc(50vh - clamp(10rem, 17vw, 17rem) + 4rem);
+    top: calc(50vh + 3.5625rem - clamp(10rem, 17vw, 17rem));
   }
   .products-showcase__ship {
     width: min(66%, 27rem);
