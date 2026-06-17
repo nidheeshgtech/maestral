@@ -666,6 +666,100 @@ if (document.readyState === "loading") {
   initProductsAccordion();
 }
 
+// Keep the right-side product visual centered in the viewport while the
+// products section owns the middle of the screen. CSS `sticky` can't do this:
+// it's clamped by the grid container, so near the end of the accordion list the
+// image gets pushed off-screen. We pin it `fixed` and dead-center instead,
+// reading its horizontal slot from the grid so the layout is preserved.
+function initProductsPin() {
+  const showcase = document.querySelector(".products-showcase");
+  if (!showcase) return;
+  const visual = showcase.querySelector(".products-showcase__visual");
+  const inner = showcase.querySelector(".products-showcase__inner");
+  if (!visual || !inner) return;
+
+  const desktop = window.matchMedia("(min-width: 1024px)");
+  let ticking = false;
+
+  function clear() {
+    visual.classList.remove("is-pinned");
+    visual.style.left = "";
+    visual.style.width = "";
+    visual.style.top = "";
+  }
+
+  function update() {
+    ticking = false;
+
+    if (!desktop.matches) {
+      clear();
+      return;
+    }
+
+    const vh = window.innerHeight;
+    const rect = showcase.getBoundingClientRect();
+    // Pin while the section still owns the upper/middle of the screen: its top
+    // has scrolled above the viewport center and its bottom hasn't yet passed
+    // the top of the viewport. This keeps the visual centered all the way to
+    // the last accordion (where the section bottom sits above center).
+    const inView = rect.top <= vh / 2 && rect.bottom >= 0;
+
+    if (!inView) {
+      clear();
+      return;
+    }
+
+    // The right grid track keeps its width/position even when the visual is
+    // taken out of flow (tracks are sized by the template, not content), so we
+    // can read the slot from the grid's computed columns.
+    const cs = getComputedStyle(inner);
+    const cols = cs.gridTemplateColumns.split(" ").map(parseFloat);
+    if (cols.length < 2) {
+      clear();
+      return;
+    }
+    const gap = parseFloat(cs.columnGap) || 0;
+    const ir = inner.getBoundingClientRect();
+    const left = ir.left + cols[0] + gap;
+
+    visual.style.left = `${left}px`;
+    visual.style.width = `${cols[1]}px`;
+    // Center vertically via inline `top` (not a CSS transform — the element's
+    // reveal animation owns `transform`, which would override centering). As the
+    // section ends, park the visual against the section's bottom edge so it
+    // rides out with the section instead of floating over the footer.
+    const height = visual.getBoundingClientRect().height;
+    const centeredTop = (vh - height) / 2;
+    const top = Math.min(centeredTop, rect.bottom - height);
+    visual.style.top = `${Math.round(top)}px`;
+    visual.classList.add("is-pinned");
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  desktop.addEventListener("change", update);
+
+  // The accordion expand/collapse animation changes the section height without
+  // firing a scroll event, so re-center whenever the section resizes.
+  if (typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(onScroll).observe(showcase);
+  }
+
+  update();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initProductsPin);
+} else {
+  initProductsPin();
+}
+
 function initMediaFilters() {
   const grids = document.querySelectorAll("[data-media-grid]");
 
