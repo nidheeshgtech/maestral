@@ -121,9 +121,54 @@ if (document.readyState === "loading") {
   initHeroAnimation();
 }
 
-heroVideo?.addEventListener("load", () => {
-  heroBanner?.classList.add("is-video-ready");
-});
+function initHeroVideo() {
+  if (!heroVideo || !heroBanner) return;
+
+  const reveal = () => heroBanner.classList.add("is-video-ready");
+
+  // The iframe `load` event fires when the player document loads — NOT when the
+  // video is actually playing. Fading the poster then briefly exposes Vimeo's
+  // grey loading background. Instead, keep the (dark) poster until the player
+  // reports real playback via its postMessage API.
+  function subscribe(value) {
+    heroVideo.contentWindow?.postMessage(
+      JSON.stringify({ method: "addEventListener", value }),
+      "*"
+    );
+  }
+
+  function onMessage(event) {
+    if (typeof event.origin !== "string" || !event.origin.includes("vimeo.com")) {
+      return;
+    }
+    let data;
+    try {
+      data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+    } catch (e) {
+      return;
+    }
+    if (data && data.event === "ready") {
+      // `timeupdate` only fires once frames are actually rendering.
+      subscribe("play");
+      subscribe("playing");
+      subscribe("timeupdate");
+    } else if (
+      data &&
+      (data.event === "play" || data.event === "playing" || data.event === "timeupdate")
+    ) {
+      reveal();
+      window.removeEventListener("message", onMessage);
+    }
+  }
+
+  window.addEventListener("message", onMessage);
+
+  // Safety net: if the API never responds (blocked, error), reveal anyway so
+  // the poster doesn't stick forever.
+  window.setTimeout(reveal, 6000);
+}
+
+initHeroVideo();
 
 function initRevealAnimations() {
   const revealItems = document.querySelectorAll(".revealme");
