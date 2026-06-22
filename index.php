@@ -190,9 +190,7 @@ include 'includes/header.php';
   <section class="geographic-reach" aria-label="Our Geographic Reach">
     <div class="geographic-reach__header container revealme">
       <h2 class="geographic-reach__title title-animation">Our Geographic Reach<span class="text-accent">.</span></h2>
-      <p class="geographic-reach__subtitle title-animation">Empowering naval customers across the Middle East, Africa,
-        South America,
-        and beyond</p>
+      <p class="geographic-reach__subtitle title-animation">Empowering naval customers across the Middle East, Africa, Southeast Asia, South America, and beyond</p>
     </div>
     <div class="geographic-reach__map-wrap revealme" aria-hidden="true">
       <img class="geographic-reach__map" src="assets/images/world-map.webp" alt="">
@@ -210,12 +208,9 @@ include 'includes/header.php';
       <h2 class="services-section__title">Services<span class="text-accent">.</span></h2>
       <p class="services-section__lead title-animation">Sustainment fit for tomorrow’s evolving naval domain</p>
       <div class="services-section__copy title-animation">
-        <p><strong>MAESTRAL</strong> is a trusted strategic partner to the UAE Navy and other maritime customers
-          worldwide. We bring expertise and resources to provide comprehensive maintenance management that supports
-          mission-critical operational readiness and logistics needs. Our solutions include fleet wide visibility and
-          insights to support even the most ambitious naval readiness postures and modernisation programmes.</p>
-        <p>Our in-service support includes maintenance, repair, overhaul and conversions;</p>
-        <p>integrated logistics support; and training solutions.</p>
+        <p><strong>MAESTRAL</strong>  is the trusted strategic partner to the UAE Navy and maritime customers worldwide, driving a step-change in fleet performance through the implementation of a proven and validated maintenance blueprint.</p>
+        <p>We leverage advanced expertise and dedicated resources to deliver comprehensive maintenance management solutions that ensure mission-critical operational readiness, reduce downtime, and significantly enhance fleet technical availability and logistics efficiency.</p>
+        <p>Our approach combines fleet-wide visibility and actionable insights with an integrated, availability-based model - designed to support even the most ambitious naval readiness requirements and modernization programmes. Our in-service support capabilities include maintenance, repair, overhaul and conversions (MRO), integrated logistics support (ILS), identification of improvement areas based on international best practices, and tailored training solutions.</p>
       </div>
     </div>
   </section>

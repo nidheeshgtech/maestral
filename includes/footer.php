@@ -27,7 +27,6 @@
         <h3>[Navigate]</h3>
         <a href="index.php">Home</a>
         <a href="about-us.php">About Us</a>
-        <a href="#">Capabilities</a>
         <a href="our-products.php">Products</a>
         <a href="#">Careers</a>
       </nav>

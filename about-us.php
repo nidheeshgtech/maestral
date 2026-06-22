@@ -23,34 +23,7 @@ include 'includes/header.php';
     </div>
   </section>
 
-  <section class="about-what about-section" aria-label="What we do">
-    <div class="about-what__content container">
-      <div class="about-what__header revealme">
-        <h2 class="about-title">What we do<span class="text-accent">.</span></h2>
-      </div>
-      <div class="about-what__grid">
-        <p class="about-copy title-animation">MAESTRAL designs, manufactures, and provides sustainment solutions for
-          advanced surface and subsea vessels that are playing a key role in future-focused maritime defence, security
-          and coast guard engagements in the UAE and around the world. As a naval solutions provider, we are at the
-          cutting edge of maritime defence, interdiction, and rescue, helping customers stay ahead of the rapidly
-          evolving defence landscape. New threats and vulnerabilities demand the out-of-the-box innovative platforms,
-          systems and technologies we deliver.<br><br>With access to the extensive technical, manufacturing, financing
-          and commercial capabilities of its two joint-venture partners,</p>
-        <p class="about-copy title-animation">MAESTRAL’s in-house engineering design and service capabilities develop
-          intellectual property solutions to meet the full range of bespoke customer fleet requirements.<br><br>We
-          produce a range of surface vessels, including offshore patrol vessels, corvettes, light frigates, and
-          oceanographic, landing platform deck, and service ships. We also are engaged in the design, development and
-          production of underwater technologies, including unmanned systems for critical underwater infrastructure
-          protection and seabed mapping, next-generation submarines, drone-carrier ships,</p>
-        <p class="about-copy title-animation">and lightweight torpedoes. This work will contribute to the UAE’s
-          position as a regional pioneer in underwater technology innovation.<br><br>Tapping into the relationships of
-          both parent companies with leading international OEMs, we complement our shipbuilding and sustainment
-          capabilities with systems integration solutions covering weapons, ISR sensors, and command and control
-          systems.</p>
-      </div>
-      <img class="about-what__image" src="assets/images/about/what-bg.webp" alt="" aria-hidden="true">
-    </div>
-  </section>
+ 
 
   <section class="about-mosaic about-section" aria-label="Naval solutions">
     <div class="about-mosaic__inner container">
@@ -68,13 +41,13 @@ include 'includes/header.php';
             platforms, systems and technologies we deliver.</p>
         </div>
         <figure class="about-mosaic__image about-mosaic__image--side revealme">
-          <img src="assets/images/about/what-grid-side.webp" alt="">
+          <img src="assets/images/about/what-grid-side_.webp" alt="">
         </figure>
       </div>
 
       <div class="about-mosaic__lane about-mosaic__lane--middle">
         <figure class="about-mosaic__image about-mosaic__image--ship revealme">
-          <img src="assets/images/about/what-grid-ship.webp" alt="">
+          <img src="assets/images/about/what-grid-ship_.webp" alt="">
         </figure>
         <div class="about-mosaic__text about-mosaic__text--middle revealme">
           <p class="about-copy title-animation">With access to the extensive technical, manufacturing, financing and
@@ -92,7 +65,7 @@ include 'includes/header.php';
 
       <div class="about-mosaic__lane about-mosaic__lane--right">
         <figure class="about-mosaic__image about-mosaic__image--front revealme">
-          <img src="assets/images/about/what-grid-front.webp" alt="">
+          <img src="assets/images/about/what-grid-front_.webp" alt="">
         </figure>
         <div class="about-mosaic__text about-mosaic__text--right revealme">
           <p class="about-copy title-animation">Tapping into the relationships of both parent companies with leading
