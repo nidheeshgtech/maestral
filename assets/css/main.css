@@ -1741,7 +1741,7 @@ h2 strong {
 }
 
 .geographic-reach__subtitle {
-  max-width: 44rem;
+  max-width: 28rem;
   margin: 1.5rem auto 0;
   color: #dde6ec;
   font-size: clamp(0.9375rem, 1.2vw, 1.125rem);
@@ -2091,7 +2091,6 @@ h2 strong {
 .about-mosaic__image::after {
   position: absolute;
   inset: 0;
-  /* background: rgba(7, 8, 12, 0.4); */
   content: "";
   pointer-events: none;
 }
