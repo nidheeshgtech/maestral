@@ -7,7 +7,7 @@ include 'includes/header.php';
 <main class="site-shell" id="main">
   <section class="hero-banner" aria-label="Maestral introduction">
     <div class="hero-banner__media" aria-hidden="true">
-      <img class="hero-banner__poster" src="assets/images/video_poster.webp" alt="">
+      <img class="hero-banner__poster" src="assets/images/video_poster_.webp" alt="">
       <iframe class="hero-banner__video"
         src="https://player.vimeo.com/video/1198667310?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0&portrait=0"
         title="Background video" allow="autoplay; fullscreen; picture-in-picture" allowtransparency="true"
