@@ -4,6 +4,7 @@ $body_class = '';
 include 'includes/header.php';
 ?>
 
+
 <main class="site-shell" id="main">
   <section class="hero-banner" aria-label="Maestral introduction">
     <div class="hero-banner__media" aria-hidden="true">
@@ -13,6 +14,7 @@ include 'includes/header.php';
         title="Background video" allow="autoplay; fullscreen; picture-in-picture" allowtransparency="true"
         loading="eager"></iframe>
     </div>
+
     <div class="hero-banner__overlay"></div>
     <div class="hero-banner__content container">
       <div class="hero-banner__copy">
@@ -43,6 +45,7 @@ include 'includes/header.php';
           <img class="who-we-are__ship" src="assets/images/fcx15-patrol-top.png" alt="">
         </div>
       </div>
+
 
       <div class="who-we-are__panel">
         <div class="who-we-are__corner" aria-hidden="true"></div>
@@ -208,7 +211,7 @@ include 'includes/header.php';
       <h2 class="services-section__title">Services<span class="text-accent">.</span></h2>
       <p class="services-section__lead title-animation">Sustainment fit for tomorrow’s evolving naval domain</p>
       <div class="services-section__copy title-animation">
-        <p><strong>MAESTRAL</strong>  is the trusted strategic partner to the UAE Navy and maritime customers worldwide, driving a step-change in fleet performance through the implementation of a proven and validated maintenance blueprint.</p>
+        <p><strong>MAESTRAL</strong> is the trusted strategic partner to the UAE Navy and maritime customers worldwide, driving a step-change in fleet performance through the implementation of a proven and validated maintenance blueprint.</p>
         <p>We leverage advanced expertise and dedicated resources to deliver comprehensive maintenance management solutions that ensure mission-critical operational readiness, reduce downtime, and significantly enhance fleet technical availability and logistics efficiency.</p>
         <p>Our approach combines fleet-wide visibility and actionable insights with an integrated, availability-based model - designed to support even the most ambitious naval readiness requirements and modernization programmes. Our in-service support capabilities include maintenance, repair, overhaul and conversions (MRO), integrated logistics support (ILS), identification of improvement areas based on international best practices, and tailored training solutions.</p>
       </div>
