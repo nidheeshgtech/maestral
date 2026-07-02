@@ -207,40 +207,13 @@ include 'includes/header.php';
   <div class="services-footer-bg-overlay"></div>
   <section class="services-section section-dark" aria-label="Services">
     <div class="services-section__divider" aria-hidden="true"></div>
-    <div class="services-section__inner container">
-      <div class="services-section__content">
-        <h2 class="services-section__title title-animation">Services<span class="text-accent">.</span></h2>
-        <p class="services-section__lead title-animation">Sustainment fit for tomorrow’s evolving naval domain</p>
-
-        <div class="services-section__blocks">
-          <div class="services-section__block revealme">
-            <h3 class="services-section__block-title title-animation">A trusted strategic partner</h3>
-            <p class="title-animation"><strong>MAESTRAL</strong> is the trusted strategic partner to the UAE Navy and maritime customers worldwide, driving a step-change in fleet performance through the implementation of a proven and validated maintenance blueprint.</p>
-          </div>
-          <div class="services-section__block revealme">
-            <h3 class="services-section__block-title title-animation">Enhancing fleet performance and readiness</h3>
-            <p class="title-animation">We leverage advanced expertise and dedicated resources to deliver comprehensive maintenance management solutions that ensure mission-critical operational readiness, reduce downtime, and significantly enhance fleet technical availability and logistics efficiency.</p>
-          </div>
-          <div class="services-section__block revealme">
-            <h3 class="services-section__block-title title-animation">Integrated, availability-based support</h3>
-            <p class="title-animation">Our approach combines fleet-wide visibility and actionable insights with an integrated, availability-based model - designed to support even the most ambitious naval readiness requirements and modernization programmes.</p>
-          </div>
-        </div>
-
-        <div class="services-section__capabilities revealme">
-          <p class="services-section__capabilities-label">Our in-service support capabilities include:</p>
-          <ul class="services-section__list">
-            <li>Maintenance, repair, overhaul and conversions</li>
-            <li>Integrated logistics support</li>
-            <li>Identification of improvement areas based on international best practices</li>
-            <li>Tailored training solutions</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="services-section__visual revealme" aria-hidden="true">
-        <img class="services-section__grid" src="assets/images/capabilities-grid.webp" alt="">
-        <img class="services-section__image" src="assets/images/products/offshore-service-vessel.webp" alt="">
+    <div class="services-section__panel container">
+      <h2 class="services-section__title">Services<span class="text-accent">.</span></h2>
+      <p class="services-section__lead title-animation">Sustainment fit for tomorrow’s evolving naval domain</p>
+      <div class="services-section__copy title-animation">
+        <p><strong>MAESTRAL</strong> is the trusted strategic partner to the UAE Navy and maritime customers worldwide, driving a step-change in fleet performance through the implementation of a proven and validated maintenance blueprint.</p>
+        <p>We leverage advanced expertise and dedicated resources to deliver comprehensive maintenance management solutions that ensure mission-critical operational readiness, reduce downtime, and significantly enhance fleet technical availability and logistics efficiency.</p>
+        <p>Our approach combines fleet-wide visibility and actionable insights with an integrated, availability-based model - designed to support even the most ambitious naval readiness requirements and modernization programmes. Our in-service support capabilities include maintenance, repair, overhaul and conversions (MRO), integrated logistics support (ILS), identification of improvement areas based on international best practices, and tailored training solutions.</p>
       </div>
     </div>
   </section>
