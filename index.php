@@ -177,7 +177,7 @@ include 'includes/header.php';
           </article>
           <article class="stats-card">
             <img class="stats-card__pattern" src="assets/images/stats-pattern-3.png" alt="" aria-hidden="true">
-            <div class="stats-card__number"><span class="js-count" data-target="20">0</span></div>
+            <div class="stats-card__number"><span class="js-count" data-target="19">0</span></div>
             <p>Shipyards</p>
           </article>
           <article class="stats-card">

@@ -149,7 +149,7 @@ include 'includes/header.php';
             recognised player in the defence and offshore specialised vessel sectors. Across 18 shipyards on three
             continents, the company’s 23,000 employees design and build the ships of tomorrow, digital, green, and
             future-proofed.</p>
-          <a class="btn btn--orange" href="#">
+          <a class="btn btn--orange" href="https://www.fincantieri.com/en" target="_blank" rel="noopener noreferrer">
             <span>Visit FINCANTIERI</span>
             <span class="btn__arrow" aria-hidden="true">
               <svg width="18" height="12" viewBox="0 0 18 12" fill="none" focusable="false">

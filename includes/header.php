@@ -44,7 +44,6 @@ function nav_link($href, $label, $file, $current)
           <?php nav_link('about-us.php', 'About Us', 'about-us.php', $current); ?>
           <?php nav_link('our-products.php', 'Products', 'our-products.php', $current); ?>
           <?php nav_link('media-centre.php', 'News', 'media-centre.php', $current); ?>
-          <a class="navbar__link" href="#">Careers</a>
         </div>
 
         <a class="btn btn--orange navbar__cta" href="contact-us.php">
