@@ -28,7 +28,6 @@
         <a href="index.php">Home</a>
         <a href="about-us.php">About Us</a>
         <a href="our-products.php">Products</a>
-        <a href="#">Careers</a>
       </nav>
 
       <div class="site-footer__column site-footer__connect">
