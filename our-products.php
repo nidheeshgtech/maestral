@@ -196,7 +196,7 @@ include 'includes/header.php';
             </div>
           </article>
 
-          <article class="product-accordion" data-product-image="assets/images/acc08.png">
+          <article class="product-accordion" data-product-image="assets/images/acc08_.png">
             <button class="product-accordion__head" type="button" aria-expanded="false">
               <span class="product-accordion__label">Offshore Service Vessel</span>
               <span class="product-accordion__icon" aria-hidden="true"></span>
