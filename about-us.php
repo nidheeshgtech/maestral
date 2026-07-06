@@ -122,7 +122,7 @@ include 'includes/header.php';
           <p class="about-copy title-animation">We will not only revolutionise the defence industry, but we will
             change its fundamentals. We are the vanguard of the next generation, of a reimagined sector. We prioritise
             technology in a non-binary world and seek universal solutions.</p>
-          <a class="btn btn--orange" href="#">
+          <a class="btn btn--orange" href="https://edgegroup.ae/" target="_blank">
             <span>Visit EDGE</span>
             <span class="btn__arrow" aria-hidden="true">
               <svg width="18" height="12" viewBox="0 0 18 12" fill="none" focusable="false">
